@@ -4,7 +4,7 @@ import UsersService from '../services/users.service.ts';
 import { Error } from 'mongoose';
 
 const UsersController = {
-  
+
   registration: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const data: IUserReg = req.body;
@@ -28,11 +28,11 @@ const UsersController = {
       );
 
       if (!user) {
-        return res.json({ message: 'User is not found' });
+        return res.status(404).json({ message: 'User is not found' });
       }
 
       if (!isMatch) {
-        return res.json({ message: 'Password is incorrect' });
+        return res.status(400).json({ message: 'Password is incorrect' });
       }
 
       return res.json(user);
