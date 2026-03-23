@@ -4,7 +4,6 @@ import UsersService from '../services/users.service.ts';
 import { Error } from 'mongoose';
 
 const UsersController = {
-
   registration: async (req: Request, res: Response, next: NextFunction) => {
     try {
       const data: IUserReg = req.body;
@@ -12,7 +11,7 @@ const UsersController = {
       res.json(user);
     } catch (error) {
       if (error instanceof Error.ValidationError) {
-        res.status(400).json({ error: error.errors });
+        res.status(400).json({ error: error.errors.title });
       }
 
       next(error);
