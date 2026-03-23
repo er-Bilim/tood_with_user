@@ -1,6 +1,6 @@
 import z from 'zod/v3';
 
-const registerUser = z.object({
+const userValidateSchema = z.object({
   username: z
     .string()
     .trim()
@@ -9,8 +9,8 @@ const registerUser = z.object({
   password: z
     .string()
     .trim()
-    .min(15, 'Password must be at least 10 characters long')
+    .min(10, 'Password must be at least 10 characters long')
     .max(35, 'Password must be at most 35 characters long'),
 });
 
-export default registerUser;
+export default userValidateSchema;
