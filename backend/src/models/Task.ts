@@ -46,6 +46,7 @@ const TaskSchema = new Schema({
     required: false,
     min: 5,
     max: 255,
+    default: null,
   },
   status: {
     type: String,
