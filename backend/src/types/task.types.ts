@@ -4,3 +4,5 @@ export interface ITask {
   description: string | null;
   status: string;
 }
+
+export type ITaskMut = Omit<ITask, 'user'>;
