@@ -30,4 +30,6 @@ tasksRouter.patch(
   TasksController.updateTask,
 );
 
+tasksRouter.delete('/:id', auth, TasksController.deleteTask);
+
 export default tasksRouter;

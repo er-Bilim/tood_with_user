@@ -31,6 +31,13 @@ const TasksService = {
 
     return updatedTask;
   },
+
+  deleteTask: async (task_id: string) => {
+    const deletedTask = await Task.findByIdAndDelete(task_id);
+    console.log(deletedTask);
+    
+    return deletedTask;
+  }
 };
 
 export default TasksService;

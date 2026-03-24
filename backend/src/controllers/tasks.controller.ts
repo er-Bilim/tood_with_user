@@ -64,6 +64,28 @@ const TasksController = {
       next(error);
     }
   },
+
+  deleteTask: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const authReq = req as RequestWithUser;
+      const task_id = req.params.id as string;
+      const isUserTask = await TasksService.getTaskById(authReq.user, task_id);
+
+      if (!isUserTask) {
+        return res.status(403).json({
+          error: 'Access denied. You are not the owner of this task',
+        });
+      }
+
+      const deleteTask = await TasksService.deleteTask(task_id);
+
+      return res.json({
+        message: 'Task deleted successfully',
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
 };
 
 export default TasksController;
