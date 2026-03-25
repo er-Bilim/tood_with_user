@@ -3,6 +3,7 @@ import cors from 'cors';
 import apiRoute from './routes/api.route.ts';
 import mongoose from 'mongoose';
 import { PORT } from './constants/constants.ts';
+import config from './config.ts';
 
 const app: Express = express();
 
@@ -17,7 +18,7 @@ app.use((_req, res) => {
 });
 
 const run = async () => {
-  await mongoose.connect('mongodb://localhost/todo-bilim');
+  await mongoose.connect(config.db);
 
   app.listen(PORT, () => {
     console.log(`http://localhost:${PORT}`);
