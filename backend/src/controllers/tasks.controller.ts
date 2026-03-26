@@ -20,7 +20,7 @@ const TasksController = {
     } catch (error) {
       if (error instanceof Error.ValidationError) {
         res.status(400).json({
-          error: error.errors.title,
+          error: error.errors,
         });
       }
       next(error);
@@ -50,7 +50,7 @@ const TasksController = {
     } catch (error) {
       if (error instanceof Error.ValidationError) {
         res.status(400).json({
-          error: error.errors.title,
+          error: error.errors,
         });
       }
       next(error);

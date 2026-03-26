@@ -11,7 +11,7 @@ const UsersController = {
       res.json(user);
     } catch (error) {
       if (error instanceof Error.ValidationError) {
-        res.status(400).json({ error: error.errors.title });
+        res.status(400).json({ error: error.errors });
       }
 
       next(error);
